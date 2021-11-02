@@ -1,6 +1,7 @@
 let input = document.querySelector("input");
 let submit = document.querySelector(".add");
 let tasksDiv = document.querySelector(".tasks");
+let removeAll = document.querySelector(".remove");
 
 let arrayOfTasks = [];
 if (localStorage.getItem("tasks")) {
@@ -13,6 +14,10 @@ submit.onclick = function () {
     addTasksToArray(input.value);
     input.value = "";
   }
+};
+removeAll.onclick = function () {
+  tasksDiv.innerHTML = "";
+  window.localStorage.clear();
 };
 tasksDiv.addEventListener("click", (e) => {
   deleteTaskWithId(e.target.parentElement.getAttribute("data-id"));
